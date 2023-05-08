@@ -28,7 +28,7 @@ class Car
     #[ORM\Column(type: 'boolean', options: [
         'default' => false
     ])]
-    private bool $isRented;
+    private bool $isRented = false;
 
     /**
      * @return int

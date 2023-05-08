@@ -2,7 +2,12 @@
 
 namespace App\Http\Requests;
 
+
+use App\Mail\Test;
+use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Http\Exceptions\HttpResponseException;
+use Illuminate\Support\Facades\Mail;
 
 class CreateCarRequest extends FormRequest
 {
@@ -13,7 +18,7 @@ class CreateCarRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -23,12 +28,22 @@ class CreateCarRequest extends FormRequest
      */
     public function rules()
     {
+        Mail::to('peraperic@gmail.com')->send(new Test());
         $currYear = date("Y");
         return [
-            'licencePlate' => 'required|string',
-            'year' => "required|number|max:$currYear",
+            'licencePlate' => 'required|string|unique:Rentacar\Domain\Entities\Car',
+            'year' => "required|numeric|max:$currYear",
             'mark' => 'required|string',
             'model' => 'required|string',
         ];
+    }
+    protected function failedValidation(Validator $validator)
+    {
+        throw new HttpResponseException(
+            response()->json([
+                'message' => "The given data is invalid",
+                'errors' => $validator->errors()
+            ], 404)
+        );
     }
 }

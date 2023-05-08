@@ -15,10 +15,10 @@ class CreateCarDTO extends BaseDTO
     public static function fromRequest(array $request): self
     {
         return new self([
-            'licencePlate' => (string)$request['$licencePlate'],
-            'year' => (int)$request['$year'],
-            'mark' => (string)$request['$mark'],
-            'model' => (string)$request['$model'],
+            'licencePlate' => (string)$request['licencePlate'],
+            'year' => (int)$request['year'],
+            'mark' => (string)$request['mark'],
+            'model' => (string)$request['model'],
         ]);
     }
 }

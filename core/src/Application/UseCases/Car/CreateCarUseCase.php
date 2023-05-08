@@ -3,6 +3,8 @@ declare(strict_types=1);
 
 namespace Rentacar\Application\UseCases\Car;
 
+use Doctrine\DBAL\Exception\UniqueConstraintViolationException;
+use PHPUnit\Exception;
 use Rentacar\Application\Contracts\UseCases\Car\CreateCarUseCaseInterface;
 use Rentacar\Application\DTOs\Input\CreateCarDTO;
 use Rentacar\Application\DTOs\Output\CarDTO;

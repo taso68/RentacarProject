@@ -7,15 +7,17 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\CreateCarRequest;
 use Illuminate\Http\JsonResponse;
 use Rentacar\Application\Contracts\UseCases\Car\CreateCarUseCaseInterface;
+use Rentacar\Application\DTOs\Input\CreateCarDTO;
 
 class CreateCarController extends Controller
 {
     public function __construct(
-        CreateCarUseCaseInterface $createCarUseCase
+        private CreateCarUseCaseInterface $createCarUseCase
     ) {}
 
     public function execute(CreateCarRequest $createCarRequest): JsonResponse
     {
-        return response()->json($createCarRequest);
+        $newCar = $this->createCarUseCase->execute(CreateCarDTO::fromRequest($createCarRequest->all()));
+        return response()->json($newCar);
     }
 }
