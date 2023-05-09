@@ -24,6 +24,7 @@ class CreateCarUseCase implements CreateCarUseCaseInterface
         $car->setYear($carDTO->year);
         $car->setMark($carDTO->mark);
         $car->setModel($carDTO->model);
+        $car->setRegisterDate($carDTO->registerDate);
         $this->carRepository->createOrUpdateCar($car);
 
         return CarDTO::fromEntity($car);

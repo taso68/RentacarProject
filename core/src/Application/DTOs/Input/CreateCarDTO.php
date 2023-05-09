@@ -4,6 +4,7 @@ declare(strict_types=1);
 namespace Rentacar\Application\DTOs\Input;
 
 use Rentacar\Application\DTOs\BaseDTO;
+use DateTime;
 
 class CreateCarDTO extends BaseDTO
 {
@@ -11,6 +12,7 @@ class CreateCarDTO extends BaseDTO
     public int $year;
     public string $mark;
     public string $model;
+    public DateTime $registerDate;
 
     public static function fromRequest(array $request): self
     {
@@ -19,6 +21,7 @@ class CreateCarDTO extends BaseDTO
             'year' => (int)$request['year'],
             'mark' => (string)$request['mark'],
             'model' => (string)$request['model'],
+            'registerDate' => DateTime::createFromFormat('d-m-Y',$request['registerDate'])
         ]);
     }
 }

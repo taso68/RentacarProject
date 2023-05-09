@@ -6,6 +6,7 @@ namespace Rentacar\Application\DTOs\Output;
 use Doctrine\Common\Collections\ArrayCollection;
 use Rentacar\Application\DTOs\BaseDTO;
 use Rentacar\Domain\Entities\Car;
+use DateTime;
 
 class CarDTO extends BaseDTO
 {
@@ -15,6 +16,7 @@ class CarDTO extends BaseDTO
     public string $mark;
     public string $model;
     public bool $isRented;
+    public ?DateTime $registerDate;
 
 
 
@@ -26,7 +28,8 @@ class CarDTO extends BaseDTO
             'year' => $car->getYear(),
             'mark' => $car->getMark(),
             'model' => $car->getModel(),
-            'isRented' => $car->isRented()
+            'isRented' => $car->isRented(),
+            'registerDate' => $car->getRegisterDate()
         ]);
     }
 

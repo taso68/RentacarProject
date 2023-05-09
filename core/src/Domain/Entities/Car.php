@@ -4,6 +4,8 @@ declare(strict_types=1);
 namespace Rentacar\Domain\Entities;
 
 use Doctrine\ORM\Mapping as ORM;
+use DateTime;
+
 
 #[ORM\Entity]
 #[ORM\Table]
@@ -24,6 +26,10 @@ class Car
     private string $mark;
     #[ORM\Column(type: 'string', length: 25)]
     private string $model;
+
+
+    #[ORM\Column(type: 'datetime', nullable: true)]
+    private ?DateTime $registerDate;
 
     #[ORM\Column(type: 'boolean', options: [
         'default' => false
@@ -126,6 +132,19 @@ class Car
         $this->isRented = $isRented;
     }
 
+    /**
+     * @return DateTime
+     */
+    public function getRegisterDate(): ?DateTime
+    {
+        return $this->registerDate;
+    }
 
-
+    /**
+     * @param DateTime $registerDate
+     */
+    public function setRegisterDate(DateTime $registerDate): void
+    {
+        $this->registerDate = $registerDate;
+    }
 }

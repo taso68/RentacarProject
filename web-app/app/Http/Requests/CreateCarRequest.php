@@ -28,13 +28,13 @@ class CreateCarRequest extends FormRequest
      */
     public function rules()
     {
-        Mail::to('peraperic@gmail.com')->send(new Test());
         $currYear = date("Y");
         return [
             'licencePlate' => 'required|string|unique:Rentacar\Domain\Entities\Car',
             'year' => "required|numeric|max:$currYear",
             'mark' => 'required|string',
             'model' => 'required|string',
+            'registerDate' => 'required|date|before:tomorrow|date_format:d-m-Y'
         ];
     }
     protected function failedValidation(Validator $validator)

@@ -6,6 +6,7 @@ namespace App\Models;
 use Doctrine\Common\Collections\ArrayCollection;
 use Lazar\Wallet\Application\DTOs\Output\WalletDTO;
 use Rentacar\Application\DTOs\Output\CarDTO;
+use DateTime;
 
 class CarModel extends BaseModel
 {
@@ -15,6 +16,7 @@ class CarModel extends BaseModel
     public string $mark;
     public string $model;
     public bool $isRented;
+    public ?string $registerDate;
 
     public function __construct(CarDTO $carDTO)
     {
@@ -24,6 +26,7 @@ class CarModel extends BaseModel
         $this->mark = $carDTO->mark;
         $this->model = $carDTO->model;
         $this->isRented = $carDTO->isRented;
+        $this->registerDate = $carDTO->registerDate?->format('d-m-Y');
     }
 
     public static function listModel(ArrayCollection $collection): array
