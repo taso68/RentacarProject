@@ -21,3 +21,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::get('/cars', [Cars\GetCarsController::class, 'execute']);
 Route::post('/cars', [Cars\CreateCarController::class, 'execute']);
+Route::put('/cars', [Cars\UpdateCarController::class, 'execute']);
