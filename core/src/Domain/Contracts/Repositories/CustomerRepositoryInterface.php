@@ -7,4 +7,6 @@ use Rentacar\Domain\Entities\Customer;
 interface CustomerRepositoryInterface
 {
     public function saveOrUpdateCustomer(Customer $customer): void;
+    public function findAllCustomers(): array;
+
 }
