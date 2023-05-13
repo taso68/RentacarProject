@@ -5,8 +5,9 @@ namespace Rentacar\Application\UseCases\Car;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Rentacar\Application\Contracts\UseCases\Car\GetCarsUseCaseInterface;
-use Rentacar\Application\DTOs\Output\CarDTO;
+use Rentacar\Application\DTOs\CarDTOs\Output\CarDTO;
 use Rentacar\Domain\Contracts\Repositories\CarRepositoryInterface;
+
 //use Rentacar\Domain\Entities\Rent;
 //use Rentacar\Domain\Entities\Worker;
 

@@ -2,9 +2,10 @@
 
 declare(strict_types=1);
 
-use Rentacar\Domain\Contracts\Repositories\CarRepositoryInterface;
-use Rentacar\Infrastructure\DataAccess\Repositories\CarRepository;
+use Rentacar\Domain\Contracts;
+use Rentacar\Infrastructure\DataAccess;
 
 return [
-    CarRepositoryInterface::class => CarRepository::class,
+    Contracts\Repositories\CarRepositoryInterface::class => DataAccess\Repositories\CarRepository::class,
+    Contracts\Repositories\CustomerRepositoryInterface::class => DataAccess\Repositories\CustomerRepository::class
 ];

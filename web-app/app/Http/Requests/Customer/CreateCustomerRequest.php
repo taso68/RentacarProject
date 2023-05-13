@@ -1,15 +1,12 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\Customer;
 
-
-use App\Mail\Test;
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Exceptions\HttpResponseException;
-use Illuminate\Support\Facades\Mail;
 
-class CreateCarRequest extends FormRequest
+class CreateCustomerRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -28,13 +25,9 @@ class CreateCarRequest extends FormRequest
      */
     public function rules()
     {
-        $currYear = date("Y");
         return [
-            'licencePlate' => 'required|string|unique:Rentacar\Domain\Entities\Car',
-            'year' => "required|numeric|max:$currYear",
-            'mark' => 'required|string',
-            'model' => 'required|string',
-            'registerDate' => 'required|date|before:tomorrow|date_format:d-m-Y'
+            'name' => 'required|max:50',
+            'phone' => 'required|max:15'
         ];
     }
     protected function failedValidation(Validator $validator)

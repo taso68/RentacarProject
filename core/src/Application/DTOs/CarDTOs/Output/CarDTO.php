@@ -1,12 +1,12 @@
 <?php
 declare(strict_types=1);
 
-namespace Rentacar\Application\DTOs\Output;
+namespace Rentacar\Application\DTOs\CarDTOs\Output;
 
+use DateTime;
 use Doctrine\Common\Collections\ArrayCollection;
 use Rentacar\Application\DTOs\BaseDTO;
 use Rentacar\Domain\Entities\Car;
-use DateTime;
 
 class CarDTO extends BaseDTO
 {

@@ -4,9 +4,7 @@ declare(strict_types=1);
 namespace App\Models;
 
 use Doctrine\Common\Collections\ArrayCollection;
-use Lazar\Wallet\Application\DTOs\Output\WalletDTO;
-use Rentacar\Application\DTOs\Output\CarDTO;
-use DateTime;
+use Rentacar\Application\DTOs\CarDTOs\Output\CarDTO;
 
 class CarModel extends BaseModel
 {

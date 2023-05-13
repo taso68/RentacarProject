@@ -16,8 +16,6 @@ class Customer
 
     #[ORM\Column(type: 'string', length: 25, )]
     private string $name;
-    #[ORM\Column(type: 'string', length: 25, )]
-    private string $surname;
     #[ORM\Column(type: 'string', length: 16, )]
     private string $phone;
 
@@ -51,22 +49,6 @@ class Customer
     public function setName(string $name): void
     {
         $this->name = $name;
-    }
-
-    /**
-     * @return string
-     */
-    public function getSurname(): string
-    {
-        return $this->surname;
-    }
-
-    /**
-     * @param string $surname
-     */
-    public function setSurname(string $surname): void
-    {
-        $this->surname = $surname;
     }
 
     /**

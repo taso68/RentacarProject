@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\Cars;
+use App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -19,6 +19,11 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/cars', [Cars\GetCarsController::class, 'execute']);
-Route::post('/cars', [Cars\CreateCarController::class, 'execute']);
-Route::put('/cars', [Cars\UpdateCarController::class, 'execute']);
+Route::get('/cars', [Controllers\Cars\GetCarsController::class, 'execute']);
+Route::post('/cars', [Controllers\Cars\CreateCarController::class, 'execute']);
+Route::put('/cars', [Controllers\Cars\UpdateCarController::class, 'execute']);
+
+Route::get('/customers', [Controllers\Customers\GetCustomersController::class, 'execute']);
+Route::get('/customer/{id}', [Controllers\Customers\GetCustomerByIdController::class, 'execute']);
+Route::post('/customers', [Controllers\Customers\CreateCustomerController::class, 'execute']);
+Route::put('/customers', [Controllers\Customers\UpdateCustomerController::class, 'execute']);

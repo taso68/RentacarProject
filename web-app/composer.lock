@@ -4485,7 +4485,7 @@
         },
         {
             "name": "rentacar/rentacar",
-            "version": "dev-master",
+            "version": "dev-main",
             "dist": {
                 "type": "path",
                 "url": "../core",

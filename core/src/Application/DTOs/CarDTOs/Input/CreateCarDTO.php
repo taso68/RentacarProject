@@ -1,10 +1,9 @@
 <?php
 declare(strict_types=1);
+namespace Rentacar\Application\DTOs\CarDTOs\Input;
 
-namespace Rentacar\Application\DTOs\Input;
-
-use Rentacar\Application\DTOs\BaseDTO;
 use DateTime;
+use Rentacar\Application\DTOs\BaseDTO;
 
 class CreateCarDTO extends BaseDTO
 {

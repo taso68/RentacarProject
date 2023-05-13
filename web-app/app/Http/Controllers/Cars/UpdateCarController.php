@@ -4,12 +4,10 @@ declare(strict_types=1);
 namespace App\Http\Controllers\Cars;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\UpdateCarRequest;
-use Illuminate\Http\Exceptions\HttpResponseException;
+use App\Http\Requests\Car\UpdateCarRequest;
 use Illuminate\Http\JsonResponse;
 use Rentacar\Application\Contracts\UseCases\Car\UpdateCarUseCaseInterface;
-use Rentacar\Application\DTOs\Input\UpdateCarDto;
-use function GuzzleHttp\Promise\all;
+use Rentacar\Application\DTOs\CarDTOs\Input\UpdateCarDto;
 
 class UpdateCarController extends Controller
 {

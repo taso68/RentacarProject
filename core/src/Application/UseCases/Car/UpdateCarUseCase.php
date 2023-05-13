@@ -4,8 +4,8 @@ declare(strict_types=1);
 namespace Rentacar\Application\UseCases\Car;
 
 use Rentacar\Application\Contracts\UseCases\Car\UpdateCarUseCaseInterface;
-use Rentacar\Application\DTOs\Input\UpdateCarDto;
-use Rentacar\Application\DTOs\Output\CarDTO;
+use Rentacar\Application\DTOs\CarDTOs\Input\UpdateCarDto;
+use Rentacar\Application\DTOs\CarDTOs\Output\CarDTO;
 use Rentacar\Domain\Contracts\Repositories\CarRepositoryInterface;
 
 class UpdateCarUseCase implements UpdateCarUseCaseInterface {

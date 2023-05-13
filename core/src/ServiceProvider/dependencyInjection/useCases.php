@@ -10,4 +10,6 @@ return [
     Contracts\UseCases\Car\GetCarUseCaseInterface::class => Application\UseCases\Car\GetCarUseCase::class,
     Contracts\UseCases\Car\CreateCarUseCaseInterface::class => Application\UseCases\Car\CreateCarUseCase::class,
     Contracts\UseCases\Car\UpdateCarUseCaseInterface::class => Application\UseCases\Car\UpdateCarUseCase::class,
+    Contracts\UseCases\Customer\CreateCustomerUseCaseInterface::class => Application\UseCases\Customer\CreateCustomerUseCase::class
+
 ];

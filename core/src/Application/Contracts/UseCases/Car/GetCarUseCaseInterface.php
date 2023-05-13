@@ -2,7 +2,7 @@
 
 namespace Rentacar\Application\Contracts\UseCases\Car;
 
-use Rentacar\Application\DTOs\Output\CarDTO;
+use Rentacar\Application\DTOs\CarDTOs\Output\CarDTO;
 
 interface GetCarUseCaseInterface
 {
