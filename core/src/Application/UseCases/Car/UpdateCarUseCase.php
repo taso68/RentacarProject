@@ -16,6 +16,16 @@ class UpdateCarUseCase implements UpdateCarUseCaseInterface {
 
     public function execute(UpdateCarDto $updateCarDto): CarDTO
     {
-        dd($updateCarDto);
+        $car = $this->carRepository->getCarById($updateCarDto->id);
+
+        if($updateCarDto->licencePlate) $car->setLicencePlate($updateCarDto->licencePlate);
+        if($updateCarDto->mark) $car->setMark($updateCarDto->mark);
+        if($updateCarDto->model) $car->setModel($updateCarDto->model);
+        if($updateCarDto->year) $car->setYear($updateCarDto->year);
+        if($updateCarDto->registerDate) $car->setRegisterDate($updateCarDto->registerDate);
+
+        $this->carRepository->createOrUpdateCar($car);
+
+        return CarDTO::fromEntity($car);
     }
 }

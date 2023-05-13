@@ -17,11 +17,14 @@ class UpdateCarDto extends BaseDTO
 
     public static function fromRequest(array $request): self {
         return new self([
-            'licencePlate' => (string)$request['licencePlate'],
-            'year' => (int)$request['year'],
-            'mark' => (string)$request['mark'],
-            'model' => (string)$request['model'],
-            'registerDate' => DateTime::createFromFormat('d-m-Y',$request['registerDate'])
+            'id' => (int) $request['id'],
+            'licencePlate' => isset($request['licencePlate']) ? (string)$request['licencePlate'] : null,
+            'year' => isset($request['year']) ? (int)$request['year'] : null,
+            'mark' => isset($request['mark']) ? (string)$request['mark'] : null,
+            'model' => isset($request['model']) ? (string)$request['model'] : null,
+            'registerDate' => isset($request['registerDate'])
+                ? DateTime::createFromFormat('d-m-Y',$request['registerDate'])
+                : null
         ]);
     }
 }

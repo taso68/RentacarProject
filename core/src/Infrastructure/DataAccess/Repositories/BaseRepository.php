@@ -21,7 +21,6 @@ abstract class BaseRepository
     protected function findById(float $id): object
     {
         $entity = $this->em->find($this->entity, $id);
-
         if(!$entity) {
             throw new EntityNotFoundException();
         }
@@ -29,18 +28,10 @@ abstract class BaseRepository
         return $entity;
     }
 
-    /**
-     * @throws EntityNotFoundException
-     */
+
     protected function findAll(): array
     {
-        $cars = $this->em->getRepository($this->entity)->findAll();
-
-        if(!$cars) {
-            throw new EntityNotFoundException();
-        }
-
-        return $cars;
+        return $this->em->getRepository($this->entity)->findAll();
     }
 
     protected function createOrUpdate(object $entity): void

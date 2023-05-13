@@ -7,6 +7,9 @@
       <sourceFolder url="file://$MODULE_DIR$/web-app/database/factories" isTestSource="false" packagePrefix="Database\Factories\" />
       <sourceFolder url="file://$MODULE_DIR$/web-app/database/seeders" isTestSource="false" packagePrefix="Database\Seeders\" />
       <sourceFolder url="file://$MODULE_DIR$/web-app/tests" isTestSource="true" packagePrefix="Tests\" />
+      <sourceFolder url="file://$MODULE_DIR$/spec" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/tests" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/web-app/spec" isTestSource="true" />
       <excludeFolder url="file://$MODULE_DIR$/web-app/vendor/asm89/stack-cors" />
       <excludeFolder url="file://$MODULE_DIR$/web-app/vendor/beberlei/doctrineextensions" />
       <excludeFolder url="file://$MODULE_DIR$/web-app/vendor/behat/transliterator" />

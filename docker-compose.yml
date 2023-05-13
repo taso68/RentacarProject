@@ -19,8 +19,6 @@ services:
       - "9002:3306"
     environment:
       MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
-      SERVICE_TAGS: dev
-      SERVICE_NAME: mysql
     volumes:
       - "./.data/mysql:/var/lib/mysql"
     command: mysqld --sql-mode="" --max_connections=1000 --max_allowed_packet=325058560 --wait_timeout=28800 --interactive_timeout=28800 --user=root
