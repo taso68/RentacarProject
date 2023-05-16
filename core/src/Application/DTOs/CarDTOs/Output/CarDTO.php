@@ -15,7 +15,6 @@ class CarDTO extends BaseDTO
     public int $year;
     public string $mark;
     public string $model;
-    public bool $isRented;
     public ?DateTime $registerDate;
 
 
@@ -28,7 +27,6 @@ class CarDTO extends BaseDTO
             'year' => $car->getYear(),
             'mark' => $car->getMark(),
             'model' => $car->getModel(),
-            'isRented' => $car->isRented(),
             'registerDate' => $car->getRegisterDate()
         ]);
     }

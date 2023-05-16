@@ -13,7 +13,6 @@ class CarModel extends BaseModel
     public int $year;
     public string $mark;
     public string $model;
-    public bool $isRented;
     public ?string $registerDate;
 
     public function __construct(CarDTO $carDTO)
@@ -23,7 +22,6 @@ class CarModel extends BaseModel
         $this->year = $carDTO->year;
         $this->mark = $carDTO->mark;
         $this->model = $carDTO->model;
-        $this->isRented = $carDTO->isRented;
         $this->registerDate = $carDTO->registerDate?->format('d-m-Y');
     }
 

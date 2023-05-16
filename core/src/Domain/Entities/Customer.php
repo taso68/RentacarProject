@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace Rentacar\Domain\Entities;
 
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Table]
@@ -19,20 +20,15 @@ class Customer
     #[ORM\Column(type: 'string', length: 16, )]
     private string $phone;
 
+    #[ORM\OneToMany(mappedBy: 'customer', targetEntity: Rent::class, cascade: ['persist'], fetch: 'LAZY')]
+    private Collection $rents;
+
     /**
      * @return int
      */
     public function getId(): int
     {
         return $this->id;
-    }
-
-    /**
-     * @param int $id
-     */
-    public function setId(int $id): void
-    {
-        $this->id = $id;
     }
 
     /**
@@ -67,5 +63,19 @@ class Customer
         $this->phone = $phone;
     }
 
+    /**
+     * @return Collection
+     */
+    public function getRents(): Collection
+    {
+        return $this->rents;
+    }
 
+    /**
+     * @param Rent $rent
+     */
+    public function addRent(Rent $rent): void
+    {
+        $this->rents[] = $rent;
+    }
 }

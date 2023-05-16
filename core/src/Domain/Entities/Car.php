@@ -3,8 +3,10 @@ declare(strict_types=1);
 
 namespace Rentacar\Domain\Entities;
 
-use Doctrine\ORM\Mapping as ORM;
 use DateTime;
+use Doctrine\Common\Collections\Collection;
+
+use Doctrine\ORM\Mapping as ORM;
 
 
 #[ORM\Entity]
@@ -31,10 +33,8 @@ class Car
     #[ORM\Column(type: 'datetime', nullable: true)]
     private ?DateTime $registerDate;
 
-    #[ORM\Column(type: 'boolean', options: [
-        'default' => false
-    ])]
-    private bool $isRented = false;
+    #[ORM\OneToMany(mappedBy: 'car', targetEntity: Rent::class, fetch: 'LAZY')]
+    private Collection $rents;
 
     /**
      * @return int
@@ -117,23 +117,7 @@ class Car
     }
 
     /**
-     * @return bool
-     */
-    public function isRented(): bool
-    {
-        return $this->isRented;
-    }
-
-    /**
-     * @param bool $isRented
-     */
-    public function setIsRented(bool $isRented): void
-    {
-        $this->isRented = $isRented;
-    }
-
-    /**
-     * @return DateTime
+     * @return DateTime|null
      */
     public function getRegisterDate(): ?DateTime
     {
@@ -147,4 +131,5 @@ class Car
     {
         $this->registerDate = $registerDate;
     }
+
 }

@@ -27,40 +27,11 @@ class Worker
     }
 
     /**
-     * @return Collection
-     */
-    public function getRents(): Collection
-    {
-        return $this->rents;
-    }
-
-    /**
-     * @param Collection $rents
-     */
-    public function setRents(Collection $rents): void
-    {
-        $this->rents = $rents;
-    }
-
-    public function addRent(Rent $rent): void
-    {
-        $this->rents->add($rent);
-    }
-
-    /**
      * @return int
      */
     public function getId(): int
     {
         return $this->id;
-    }
-
-    /**
-     * @param int $id
-     */
-    public function setId(int $id): void
-    {
-        $this->id = $id;
     }
 
     /**
@@ -78,4 +49,26 @@ class Worker
     {
         $this->name = $name;
     }
+
+    /**
+     * @return Collection
+     */
+    public function getRents(): Collection
+    {
+        return $this->rents;
+    }
+
+    /**
+     * @param Collection $rents
+     */
+    public function setRents(Collection $rents): void
+    {
+        $this->rents = $rents;
+    }
+
+    public function addRent(Rent $rent): void
+    {
+        $this->rents[] = $rent;
+    }
+
 }
