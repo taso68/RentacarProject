@@ -8,6 +8,7 @@ use Rentacar\Application\DTOs\CustomerDTOs\Input\CreateCustomerDTO;
 use Rentacar\Application\DTOs\CustomerDTOs\Output\CustomerDTO;
 use Rentacar\Domain\Contracts\Repositories\CustomerRepositoryInterface;
 use Rentacar\Domain\Entities\Customer;
+use Rentacar\Infrastructure\DataAccess\Exceptions\EntityAlreadyExistException;
 
 class CreateCustomerUseCase implements CreateCustomerUseCaseInterface
 {
@@ -15,8 +16,17 @@ class CreateCustomerUseCase implements CreateCustomerUseCaseInterface
         private CustomerRepositoryInterface $customerRepository
     )
     {}
+
+    /**
+     * @throws EntityAlreadyExistException
+     */
     public function execute(CreateCustomerDTO $createCustomerDTO): CustomerDTO
     {
+        if($this->customerRepository->findCustomerByNameAndPhone($createCustomerDTO->name, $createCustomerDTO->phone))
+        {
+            throw new EntityAlreadyExistException("Customer with name $createCustomerDTO->name and phone $createCustomerDTO->phone already exist", 409);
+        }
+
         $customer = new Customer();
         $customer->setName($createCustomerDTO->name);
         $customer->setPhone($createCustomerDTO->phone);

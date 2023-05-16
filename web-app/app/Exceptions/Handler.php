@@ -5,6 +5,7 @@ namespace App\Exceptions;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Illuminate\Http\JsonResponse;
 use Rentacar\Infrastructure\DataAccess\Exceptions\EntityAlreadyExistException;
+use Rentacar\Infrastructure\DataAccess\Exceptions\EntityNotFoundException;
 use Throwable;
 
 class Handler extends ExceptionHandler
@@ -17,6 +18,11 @@ class Handler extends ExceptionHandler
             ], $e->getCode());
         }
 
+        if($e instanceof EntityNotFoundException) {
+            return response()->json([
+                'error' => $e->getMessage(),
+            ], $e->getCode());
+        }
         return parent::render($request, $e);
     }
 

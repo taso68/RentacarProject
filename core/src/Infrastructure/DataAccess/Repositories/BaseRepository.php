@@ -22,12 +22,11 @@ abstract class BaseRepository
     {
         $entity = $this->em->find($this->entity, $id);
         if(!$entity) {
-            throw new EntityNotFoundException();
+            throw new EntityNotFoundException("Not found", 404);
         }
 
         return $entity;
     }
-
 
     protected function findAll(): array
     {

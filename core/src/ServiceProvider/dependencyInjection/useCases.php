@@ -11,4 +11,5 @@ return [
     Contracts\UseCases\Car\CreateCarUseCaseInterface::class => Application\UseCases\Car\CreateCarUseCase::class,
     Contracts\UseCases\Car\UpdateCarUseCaseInterface::class => Application\UseCases\Car\UpdateCarUseCase::class,
     Contracts\UseCases\Customer\CreateCustomerUseCaseInterface::class => Application\UseCases\Customer\CreateCustomerUseCase::class,
+    Contracts\UseCases\Customer\GetCustomerByIdUseCaseInterface::class => Application\UseCases\Customer\GetCustomerByIdUseCase::class
 ];

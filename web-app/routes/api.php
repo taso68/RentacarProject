@@ -24,6 +24,6 @@ Route::post('/cars', [Controllers\Cars\CreateCarController::class, 'execute']);
 Route::put('/cars', [Controllers\Cars\UpdateCarController::class, 'execute']);
 
 Route::get('/customers', [Controllers\Customers\GetCustomersController::class, 'execute']);
-Route::get('/customer/{id}', [Controllers\Customers\GetCustomerByIdController::class, 'execute']);
+Route::get('/customers/{id}', [Controllers\Customers\GetCustomerByIdController::class, 'execute']);
 Route::post('/customers', [Controllers\Customers\CreateCustomerController::class, 'execute']);
 Route::put('/customers', [Controllers\Customers\UpdateCustomerController::class, 'execute']);
