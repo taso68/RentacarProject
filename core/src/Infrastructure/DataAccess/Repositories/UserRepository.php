@@ -25,5 +25,6 @@ class UserRepository extends BaseRepository implements UserRepositoryInterface
 
     public function findUserByNameAndPhone(string $name, string $phone): ?User
     {
+        return $this->em->getRepository(User::class)->findOneBy(['name' => $name, 'phone' => $phone]);
     }
 }

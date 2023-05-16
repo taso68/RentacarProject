@@ -14,7 +14,7 @@ class CarRepository extends BaseRepository implements CarRepositoryInterface
     /**
      * @throws EntityNotFoundException
      */
-    public function getCarById(float $id): Car
+    public function getCarById(int $id): Car
     {
         return $this->findById($id);
     }
