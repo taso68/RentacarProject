@@ -7,5 +7,5 @@ use Rentacar\Infrastructure\DataAccess;
 
 return [
     Contracts\Repositories\CarRepositoryInterface::class => DataAccess\Repositories\CarRepository::class,
-    Contracts\Repositories\CustomerRepositoryInterface::class => DataAccess\Repositories\CustomerRepository::class
+    Contracts\Repositories\UserRepositoryInterface::class => DataAccess\Repositories\UserRepository::class
 ];

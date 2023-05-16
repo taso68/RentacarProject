@@ -3,8 +3,10 @@ declare(strict_types=1);
 
 namespace Rentacar\Domain\Entities;
 
-use DateTime;
 use Doctrine\ORM\Mapping as ORM;
+
+use DateTime;
+use Rentacar\Domain\Entities\User\User;
 
 #[ORM\Entity]
 #[ORM\Table]
@@ -15,13 +17,13 @@ class Rent
     #[ORM\GeneratedValue]
     private int $id;
 
-    #[ORM\ManyToOne(targetEntity: Customer::class, inversedBy: 'rents')]
+    #[ORM\ManyToOne(targetEntity: User::class, inversedBy: 'rents')]
     #[ORM\JoinColumn(name: 'customer_id', referencedColumnName: 'id', nullable: false, onDelete: 'CASCADE')]
-    private Customer $customer;
+    private User $customer;
 
-    #[ORM\ManyToOne(targetEntity: Worker::class)]
+    #[ORM\ManyToOne(targetEntity: User::class)]
     #[ORM\JoinColumn(name: 'worker_id', referencedColumnName: 'id', nullable: false)]
-    private Worker $worker;
+    private User $worker;
 
     #[ORM\ManyToOne(targetEntity: Car::class, inversedBy: 'rents')]
     #[ORM\JoinColumn(name: 'car_id', referencedColumnName: 'id', nullable: false, onDelete: 'CASCADE')]
@@ -45,33 +47,33 @@ class Rent
     }
 
     /**
-     * @return Customer
+     * @return User
      */
-    public function getCustomer(): Customer
+    public function getCustomer(): User
     {
         return $this->customer;
     }
 
     /**
-     * @param Customer $customer
+     * @param User $customer
      */
-    public function setCustomer(Customer $customer): void
+    public function setCustomer(User $customer): void
     {
         $this->customer = $customer;
     }
 
     /**
-     * @return Worker
+     * @return User
      */
-    public function getWorker(): Worker
+    public function getWorker(): User
     {
         return $this->worker;
     }
 
     /**
-     * @param Worker $worker
+     * @param User $worker
      */
-    public function setWorker(Worker $worker): void
+    public function setWorker(User $worker): void
     {
         $this->worker = $worker;
     }
@@ -131,6 +133,4 @@ class Rent
     {
         $this->ends = $ends;
     }
-
-
 }

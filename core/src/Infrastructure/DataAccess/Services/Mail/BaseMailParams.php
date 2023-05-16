@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace Rentacar\Infrastructure\Services\Mail;
+namespace Rentacar\Infrastructure\DataAccess\Services\Mail;
 
 class BaseMailParams
 {
