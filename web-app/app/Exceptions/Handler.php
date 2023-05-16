@@ -3,10 +3,23 @@
 namespace App\Exceptions;
 
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Illuminate\Http\JsonResponse;
+use Rentacar\Infrastructure\DataAccess\Exceptions\EntityAlreadyExistException;
 use Throwable;
 
 class Handler extends ExceptionHandler
 {
+    public function render($request, Throwable $e): JsonResponse
+    {
+        if($e instanceof EntityAlreadyExistException) {
+            return response()->json([
+                'error' => $e->getMessage(),
+            ], $e->getCode());
+        }
+
+        return parent::render($request, $e);
+    }
+
     /**
      * A list of the exception types that are not reported.
      *
@@ -32,7 +45,7 @@ class Handler extends ExceptionHandler
      *
      * @return void
      */
-    public function register()
+    public function register(): void
     {
         $this->reportable(function (Throwable $e) {
             //
