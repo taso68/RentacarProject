@@ -1,10 +1,11 @@
 <?php
+declare(strict_types=1);
 
 namespace Rentacar\Domain\Entities\User\Enums;
 
-enum UserTypeEnum
+enum UserTypeEnum:int
 {
-    case WORKER;
-    case CUSTOMER;
-    case ADMINISTRATOR;
+    case CUSTOMER = 1;
+    case WORKER = 2;
+    case ADMINISTRATOR = 3;
 }

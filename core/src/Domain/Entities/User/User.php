@@ -19,7 +19,8 @@ class User
     private int $id;
     #[ORM\Column(type: 'string', length: 25, )]
     private string $name;
-    private UserTypeEnum $role;
+    #[ORM\Column(type: 'integer', nullable: false, options:['default' => UserTypeEnum::CUSTOMER])]
+    private int $role;
     #[ORM\Column(type: 'string', length: 16, )]
     private string $phone;
     #[ORM\OneToMany(mappedBy: 'worker', targetEntity: Rent::class, cascade: ['remove', 'persist'], fetch: 'LAZY')]
@@ -50,17 +51,17 @@ class User
     }
 
     /**
-     * @return UserTypeEnum
+     * @return int
      */
-    public function getRole(): UserTypeEnum
+    public function getRole(): int
     {
         return $this->role;
     }
 
     /**
-     * @param UserTypeEnum $role
+     * @param int $role
      */
-    public function setRole(UserTypeEnum $role): void
+    public function setRole(int $role): void
     {
         $this->role = $role;
     }

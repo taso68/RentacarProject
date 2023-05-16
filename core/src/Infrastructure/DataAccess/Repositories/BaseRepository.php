@@ -18,7 +18,7 @@ abstract class BaseRepository
     /**
      * @throws EntityNotFoundException
      */
-    protected function findById(float $id): object
+    protected function findById(int $id): object
     {
         $entity = $this->em->find($this->entity, $id);
         if(!$entity) {

@@ -5,12 +5,18 @@ namespace Rentacar\Infrastructure\DataAccess\Repositories;
 
 use Rentacar\Domain\Contracts\Repositories\UserRepositoryInterface;
 use Rentacar\Domain\Entities\User\User;
+use Rentacar\Infrastructure\DataAccess\Exceptions\EntityNotFoundException;
 
 class UserRepository extends BaseRepository implements UserRepositoryInterface
 {
+    protected string $entity = User::class;
 
+    /**
+     * @throws EntityNotFoundException
+     */
     public function findUserById(int $id): User
     {
+        return $this->findById($id);
     }
 
     public function saveOrUpdateUser(User $customer): void
