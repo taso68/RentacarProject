@@ -2,8 +2,8 @@
 
 declare(strict_types=1);
 
-use Rentacar\Application\Contracts;
 use Rentacar\Application;
+use Rentacar\Application\Contracts;
 
 return [
     Contracts\UseCases\Car\GetCarsUseCaseInterface::class => Application\UseCases\Car\GetCarsUseCase::class,

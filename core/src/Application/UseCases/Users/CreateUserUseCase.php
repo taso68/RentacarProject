@@ -22,11 +22,6 @@ class CreateUserUseCase implements CreateUserUseCaseInterface
      */
     public function execute(CreateUserDTO $createUserDTO): UserDTO
     {
-        if($this->userRepository->findUserByNameAndPhone($createUserDTO->name, $createUserDTO->phone))
-        {
-            throw new EntityAlreadyExistException("User with name $createUserDTO->name and phone $createUserDTO->phone already exist", 409);
-        }
-
         $user = new User();
         $user->setName($createUserDTO->name);
         $user->setPhone($createUserDTO->phone);

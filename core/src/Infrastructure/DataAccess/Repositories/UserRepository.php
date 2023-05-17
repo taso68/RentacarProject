@@ -19,8 +19,9 @@ class UserRepository extends BaseRepository implements UserRepositoryInterface
         return $this->findById($id);
     }
 
-    public function saveOrUpdateUser(User $customer): void
+    public function saveOrUpdateUser(User $user): void
     {
+      $this->createOrUpdate($user);
     }
 
     public function findUserByNameAndPhone(string $name, string $phone): ?User
