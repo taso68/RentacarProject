@@ -12,14 +12,16 @@ class UserModel extends BaseModel
     public int $id;
     public string $name;
     public string $phone;
+    public int $role;
 
     public function __construct(UserDTO $user)
     {
         $this->id = $user->id;
         $this->name = $user->name;
         $this->phone = $user->phone;
-    }
+        $this->role = $user->role;
 
+    }
 
     public static function listModel(ArrayCollection $collection): array
     {
