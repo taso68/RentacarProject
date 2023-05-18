@@ -26,7 +26,7 @@ class CreateUserRequest extends FormRequest
      */
     public function rules()
     {
-        $name = request()->get('name');
+        $name = request()->input('name');
         return [
             'name' => 'required|string|max:255',
             'phone' =>["required", 'string', 'max:20', Rule::unique('Rentacar\Domain\Entities\User\User', 'phone')->where('name', $name)]

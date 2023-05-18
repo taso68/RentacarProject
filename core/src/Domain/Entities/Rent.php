@@ -38,6 +38,11 @@ class Rent
     #[ORM\Column(type: 'datetime')]
     private DateTime $ends;
 
+    public function __construct()
+    {
+        $this->createdAt = new DateTime();
+    }
+
     /**
      * @return int
      */

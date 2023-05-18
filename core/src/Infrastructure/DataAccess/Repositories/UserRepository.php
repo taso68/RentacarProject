@@ -19,6 +19,10 @@ class UserRepository extends BaseRepository implements UserRepositoryInterface
         return $this->findById($id);
     }
 
+    /**
+     * @param User $user
+     * @return void
+     */
     public function saveOrUpdateUser(User $user): void
     {
       $this->createOrUpdate($user);
