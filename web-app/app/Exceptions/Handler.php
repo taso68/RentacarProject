@@ -10,21 +10,31 @@ use Throwable;
 
 class Handler extends ExceptionHandler
 {
-//    public function render($request, Throwable $e): JsonResponse
-//    {
-//        if($e instanceof EntityAlreadyExistException) {
-//            return response()->json([
-//                'error' => $e->getMessage(),
-//            ], $e->getCode());
+    public function render($request, Throwable $e): JsonResponse
+    {
+        if($e instanceof EntityAlreadyExistException) {
+            return response()->json([
+                'error' => $e->getMessage(),
+            ], $e->getCode());
+        }
+
+        if($e instanceof EntityNotFoundException) {
+            return response()->json([
+                'error' => $e->getMessage(),
+            ], $e->getCode());
+        }
+//        switch ($e) {
+//            case $e instanceof EntityAlreadyExistException:
+//                return response()->json([
+//                    'error' => $e->getMessage() ?? 'Entity already exist',
+//                ], $e->getCode() ?? 409);
+//            case $e instanceof EntityNotFoundException:
+//                return response()->json([
+//                    'error' => $e->getMessage() ?? 'Entity not found',
+//                ], $e->getCode() ?? 404);
 //        }
-//
-//        if($e instanceof EntityNotFoundException) {
-//            return response()->json([
-//                'error' => $e->getMessage(),
-//            ], $e->getCode());
-//        }
-//        return parent::render($request, $e);
-//    }
+        return parent::render($request, $e);
+    }
 
     /**
      * A list of the exception types that are not reported.
