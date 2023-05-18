@@ -23,8 +23,11 @@ class User
     private int $role;
     #[ORM\Column(type: 'string', length: 16, )]
     private string $phone;
-    #[ORM\OneToMany(mappedBy: 'worker', targetEntity: Rent::class, cascade: ['remove', 'persist'], fetch: 'LAZY')]
+    #[ORM\OneToMany(mappedBy: 'worker', targetEntity: Rent::class, cascade: ['remove', 'persist'])]
     private Collection $rents;
+
+    #[ORM\OneToMany( mappedBy: 'customer', targetEntity: Rent::class, cascade: ['remove', 'persist'])]
+    private Collection $customerRents;
 
     /**
      * @return int
@@ -102,4 +105,26 @@ class User
     {
         $this->rents[] = $rent;
     }
+
+    /**
+     * @return Collection
+     */
+    public function getCustomerRents(): Collection
+    {
+        return $this->customerRents;
+    }
+
+    /**
+     * @param Collection $customerRents
+     */
+    public function setCustomerRents(Collection $customerRents): void
+    {
+        $this->customerRents = $customerRents;
+    }
+
+    public function addCustomerRent(Rent $rent): void
+    {
+        $this->customerRents[] = $rent;
+    }
+
 }

@@ -16,4 +16,5 @@ return [
     Contracts\UseCases\Users\UpdateUserUseCaseInterface::class => Application\UseCases\Users\UpdateUserUseCase::class,
 
     Contracts\UseCases\Rents\CreateRentUseCaseInterface::class => Application\UseCases\Rents\CreateRentUseCase::class,
+    Contracts\UseCases\Rents\GetRentUseCaseInterface::class => Application\UseCases\Rents\GetRentUseCase::class,
 ];

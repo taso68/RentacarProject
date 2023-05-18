@@ -17,15 +17,15 @@ class Rent
     #[ORM\GeneratedValue]
     private int $id;
 
-    #[ORM\ManyToOne(targetEntity: User::class, inversedBy: 'rents')]
+    #[ORM\ManyToOne(targetEntity: User::class, fetch: 'EAGER',inversedBy: 'customerRents')]
     #[ORM\JoinColumn(name: 'customer_id', referencedColumnName: 'id', nullable: false, onDelete: 'CASCADE')]
     private User $customer;
 
-    #[ORM\ManyToOne(targetEntity: User::class)]
+    #[ORM\ManyToOne(targetEntity: User::class, fetch: 'EAGER', inversedBy: 'rents')]
     #[ORM\JoinColumn(name: 'worker_id', referencedColumnName: 'id', nullable: false)]
     private User $worker;
 
-    #[ORM\ManyToOne(targetEntity: Car::class, inversedBy: 'rents')]
+    #[ORM\ManyToOne(targetEntity: Car::class, fetch: 'EAGER', inversedBy: 'rents')]
     #[ORM\JoinColumn(name: 'car_id', referencedColumnName: 'id', nullable: false, onDelete: 'CASCADE')]
     private Car $car;
 

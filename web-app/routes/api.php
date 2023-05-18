@@ -29,3 +29,4 @@ Route::post('/cars', [Controllers\Cars\CreateCarController::class, 'execute']);
 Route::put('/cars', [Controllers\Cars\UpdateCarController::class, 'execute']);
 
 Route::post('/rents', [Controllers\Rents\CreateRentController::class, 'execute']);
+Route::get('/rents/{id}', [Controllers\Rents\GetRentController::class, 'execute']);
