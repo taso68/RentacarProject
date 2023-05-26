@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace Rentacar\Domain\Entities\User;
 
+use DateTime;
 use Doctrine\Common\Collections\Collection;
 use Rentacar\Domain\Entities\Rent;
 use Rentacar\Domain\Entities\User\Enums\UserTypeEnum;
@@ -19,10 +20,21 @@ class User
     private int $id;
     #[ORM\Column(type: 'string', length: 25, )]
     private string $name;
-    #[ORM\Column(type: 'integer', nullable: false, options:['default' => UserTypeEnum::CUSTOMER])]
-    private int $role;
     #[ORM\Column(type: 'string', length: 16, )]
     private string $phone;
+    #[ORM\Column(type: 'string', length: 16, )]
+    private string $email;
+    #[ORM\Column(type: 'string', length: 50, )]
+    private string $password;
+    #[ORM\Column(type: 'integer', nullable: false, options:['default' => UserTypeEnum::CUSTOMER])]
+    private int $role;
+
+    #[ORM\Column(type: 'string', length: 150)]
+    private ?string $verifyToken;
+
+    #[ORM\Column(name: 'email_verified_at', type: 'datetime', nullable: true)]
+    private ?DateTime $emailVerifiedAt =  null;
+
     #[ORM\OneToMany(mappedBy: 'worker', targetEntity: Rent::class, cascade: ['remove', 'persist'])]
     private Collection $rents;
 
@@ -83,6 +95,70 @@ class User
     public function setPhone(string $phone): void
     {
         $this->phone = $phone;
+    }
+
+    /**
+     * @return string
+     */
+    public function getEmail(): string
+    {
+        return $this->email;
+    }
+
+    /**
+     * @param string $email
+     */
+    public function setEmail(string $email): void
+    {
+        $this->email = $email;
+    }
+
+    /**
+     * @return string
+     */
+    public function getPassword(): string
+    {
+        return $this->password;
+    }
+
+    /**
+     * @param string $password
+     */
+    public function setPassword(string $password): void
+    {
+        $this->password = $password;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getVerifyToken(): ?string
+    {
+        return $this->verifyToken;
+    }
+
+    /**
+     * @param string|null $verifyToken
+     */
+    public function setVerifyToken(?string $verifyToken): void
+    {
+        $this->verifyToken = $verifyToken;
+    }
+
+    /**
+     * @return DateTime|null
+     */
+    public function getEmailVerifiedAt(): ?DateTime
+    {
+        return $this->emailVerifiedAt;
+    }
+
+    /**
+     * @param DateTime|null $emailVerifiedAt
+     */
+    public function setEmailVerifiedAt(?DateTime $emailVerifiedAt): void
+    {
+        $this->emailVerifiedAt = $emailVerifiedAt;
     }
 
     /**

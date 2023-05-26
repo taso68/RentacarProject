@@ -28,6 +28,10 @@ class UserRepository extends BaseRepository implements UserRepositoryInterface
       $this->createOrUpdate($user);
     }
 
+    public function storeUser(User $user): void
+    {
+        $this->createOrUpdate($user);
+    }
     public function findUserByNameAndPhone(string $name, string $phone): ?User
     {
         return $this->em->getRepository(User::class)->findOneBy(['name' => $name, 'phone' => $phone]);
